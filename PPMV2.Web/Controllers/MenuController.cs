@@ -15,7 +15,7 @@ namespace PPMV2.Web.Controllers
             this._repo = repo;
         }
 
-        // GET: api/Tag
+        // GET: api/Menu
         [HttpGet]
         public async Task<IEnumerable<MenuMaster>> Get()
         {
