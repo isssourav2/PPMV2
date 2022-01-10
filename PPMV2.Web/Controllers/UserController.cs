@@ -14,7 +14,8 @@ namespace PPMV2.Web.Controllers
 
         public UserController(IUserRepository repo)
         {
-            this._repo = repo;
+            //Repo Object
+            this._repo = repo; 
         }
         // GET: api/<UserController>
         [HttpGet]
