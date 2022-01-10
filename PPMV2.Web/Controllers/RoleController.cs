@@ -21,6 +21,7 @@ namespace PPMV2.Web.Controllers
 
         public RoleController(IRoleRepository repo)
         {
+            //Repo Object
            // _context = context;
            this._repo = repo;
         }
