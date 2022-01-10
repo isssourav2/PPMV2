@@ -15,6 +15,12 @@ namespace PPMV2.Web.Controllers
             this._repo = repo;
         }
 
+        [HttpGet]
+        public async Task<IEnumerable<RoleMenuMapping>> Get()
+        {
+            return await this._repo.GetAll();
+        }
+
         // GET: api/RoleMenuMapping/5
         [HttpGet("{id}")]
         public async Task<RoleMenuMapping> Get(int id)
