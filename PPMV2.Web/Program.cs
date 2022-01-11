@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using PPMV2.Core.Infrastructure.MenuRepo;
+using PPMV2.Core.Infrastructure.MenuwithRoleRepo;
 using PPMV2.Core.Infrastructure.Repository;
 using PPMV2.Core.Infrastructure.RoleRepo;
 using PPMV2.Core.Infrastructure.TagRepo;
@@ -15,6 +17,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ITagRepository, TagRepository>();
 builder.Services.AddTransient<IRoleRepository, RoleRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IMenuRepository, MenuRepository>();
+builder.Services.AddTransient<IMenuwithRoleRepository, MenuwithRoleRepository>();
 
 var app = builder.Build();
 
