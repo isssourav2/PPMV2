@@ -44,8 +44,8 @@ namespace PPMV2.Web.Controllers
 
         // PUT: api/Roles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task Put(int id, Role role)
+        [HttpPut]
+        public async Task Put(Role role)
         {
             role.UpdateDate= DateTime.Now;
             await this._repo.Update(role);
