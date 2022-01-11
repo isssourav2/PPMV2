@@ -11,6 +11,7 @@ namespace PPMV2.Core.Infrastructure.RoleRepo
     public interface IRoleRepository : IRepository<Role>
     {
         Task<IEnumerable<Role>> GetAll();
+        Task<IEnumerable<Role>> GetWithUserCount();
         Task<Role> GetById(int id);
 
         Task Add(Role entity);

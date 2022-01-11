@@ -18,5 +18,7 @@ namespace PPMV2.Core.Infrastructure.UserRepo
         Task Update(User entity);
 
         Task Delete(User entity);
+
+       Message GetUserCountByRoleId(int roleid);
     }
 }

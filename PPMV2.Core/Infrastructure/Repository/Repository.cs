@@ -11,8 +11,8 @@ namespace PPMV2.Core.Infrastructure.Repository
 {
     public class Repository<T> : IRepository<T> where T : class,new()
     {
-        private readonly PPMContext _context;
-        private DbSet<T> entity;
+        protected readonly PPMContext _context;
+        protected DbSet<T> entity;
 
         public Repository()
         {

@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using PPMV2.Core.Domain.Entity;
 using PPMV2.Core.Infrastructure.Repository;
 using PPMV2.Core.Infrastructure.RoleRepo;
+using PPMV2.Core.Infrastructure.UserRepo;
+using PPMV2.Web.ViewModel;
 
 namespace PPMV2.Web.Controllers
 {
@@ -30,7 +32,7 @@ namespace PPMV2.Web.Controllers
         [HttpGet]
         public async Task<IEnumerable<Role>> Get()
         {
-            return await this._repo.GetAll();
+           return await this._repo.GetWithUserCount();
         }
 
         // GET: api/Roles/5
@@ -48,7 +50,12 @@ namespace PPMV2.Web.Controllers
             role.UpdateDate= DateTime.Now;
             await this._repo.Update(role);
         }
-
+        //get user by Role Id
+        //[HttpGet("GetUserByRoleId/{roleid}")]
+        //public async Task<Message> GetUsrByRoleId(int roleid)
+        //{
+        //    return await this..GetUserCountByRoleId(roleid);
+        //}
         // POST: api/Roles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]

@@ -10,5 +10,13 @@ namespace PPMV2.Core.Infrastructure.UserRepo
 {
     public class UserRepository: Repository<User>,IUserRepository
     {
+        public Message GetUserCountByRoleId(int roleid)
+        {
+            Message mes=new Message();
+            mes.Count=  this.entity.Where(x=>x.RoleId==roleid).ToList().Count();
+            mes.message = "User_count";
+            mes.Status = "";
+            return mes;
+        }
     }
 }

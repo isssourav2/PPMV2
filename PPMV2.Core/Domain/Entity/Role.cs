@@ -18,5 +18,8 @@ namespace PPMV2.Core.Domain.Entity
         public bool IsActive { get; set; }
         public DateTime EntryDate { get; set; }
         public DateTime? UpdateDate { get; set; }
+        [NotMapped]
+        public int? userCount { get; set; }
+      
     }
 }
