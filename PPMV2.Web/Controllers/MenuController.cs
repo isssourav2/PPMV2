@@ -4,7 +4,9 @@ using PPMV2.Core.Infrastructure.MenuRepo;
 
 namespace PPMV2.Web.Controllers
 {
-    public class MenuController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class MenuController : ControllerBase
     {
         private readonly IMenuRepository _repo;
 
