@@ -41,9 +41,19 @@ namespace PPMV2.Web.Controllers
         // POST: api/RoleMenuMapping
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task Post(RoleMenuMapping roleMenuMapping)
+        public async Task Post(List<RoleMenuMapping> roleMenuMapping)
         {
-            await this._repo.Add(roleMenuMapping);
+            try
+            { 
+            foreach (var item in roleMenuMapping)
+            {
+                await this._repo.Add(item);
+            }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         // DELETE: api/RoleMenuMapping/5
