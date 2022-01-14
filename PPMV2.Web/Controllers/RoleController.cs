@@ -61,9 +61,16 @@ namespace PPMV2.Web.Controllers
         [HttpPost]
         public async Task Post(Role role)
         {
+            try
+            { 
             role.IsActive= true;
             role.EntryDate= DateTime.Now;
             await this._repo.Add(role);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         // DELETE: api/Roles/5

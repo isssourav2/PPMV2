@@ -20,3 +20,4 @@ namespace PPMV2.Core.Domain.Entity
         //public virtual Role Role { get; set; }
     }
 }
+    
