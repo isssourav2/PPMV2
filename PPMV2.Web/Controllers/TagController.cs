@@ -34,8 +34,8 @@ namespace PPMV2.Web.Controllers
 
         // PUT: api/Tag/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task Put(int id, Tag tag)
+        [HttpPut]
+        public async Task Put(Tag tag)
         {
             await this._repo.Update(tag);
         }
