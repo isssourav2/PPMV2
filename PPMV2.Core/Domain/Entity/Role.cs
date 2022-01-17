@@ -20,6 +20,8 @@ namespace PPMV2.Core.Domain.Entity
         public DateTime? UpdateDate { get; set; }
         [NotMapped]
         public int? userCount { get; set; }
-      
+        [NotMapped]
+        public int? PermissionCount { get; set; }
+
     }
 }
