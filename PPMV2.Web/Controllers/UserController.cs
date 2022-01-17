@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PPMV2.Core.Domain.Entity;
+using PPMV2.Core.Infrastructure.RoleRepo;
 using PPMV2.Core.Infrastructure.UserRepo;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,17 +12,19 @@ namespace PPMV2.Web.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _repo;
+        private readonly IRoleRepository _Rolerepo;
 
-        public UserController(IUserRepository repo)
+        public UserController(IUserRepository repo, IRoleRepository Rolerepo)
         {
             //Repo Object
             this._repo = repo; 
+            this._Rolerepo = Rolerepo;
         }
         // GET: api/<UserController>
         [HttpGet]
         public async Task<IEnumerable<User>> Get()
         {
-            return await this._repo.GetAll();
+            return await this._Rolerepo.GetAllWithRoleName();
         }
 
         // GET api/<UserController>/5

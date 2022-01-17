@@ -12,6 +12,7 @@ namespace PPMV2.Core.Infrastructure.RoleRepo
     {
         Task<IEnumerable<Role>> GetAll();
         Task<IEnumerable<Role>> GetWithUserCount();
+        Task<IEnumerable<User>> GetAllWithRoleName();
         Task<Role> GetById(int id);
 
         Task Add(Role entity);

@@ -11,6 +11,7 @@ namespace PPMV2.Core.Infrastructure.UserRepo
     public interface IUserRepository : IRepository<User>
     {
         Task<IEnumerable<User>> GetAll();
+
         Task<User> GetById(int id);
 
         Task Add(User entity);
@@ -18,7 +19,5 @@ namespace PPMV2.Core.Infrastructure.UserRepo
         Task Update(User entity);
 
         Task Delete(User entity);
-
-       Message GetUserCountByRoleId(int roleid);
     }
 }

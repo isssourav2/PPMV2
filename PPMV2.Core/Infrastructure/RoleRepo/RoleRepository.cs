@@ -32,5 +32,17 @@ namespace PPMV2.Core.Infrastructure.RoleRepo
             }
             return roles;
         }
+
+        public async Task<IEnumerable<User>> GetAllWithRoleName()
+        {
+            List<User> users = new List<User>();
+            var Users = await this._userRepository.GetAll();
+            foreach (var user in Users)
+            {
+                user.RoleName = this.GetById(user.RoleId).Result?.RoleName;
+                users.Add(user);
+            }
+            return users;
+        }
     }
 }
