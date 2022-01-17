@@ -14,6 +14,5 @@ namespace PPMV2.Core.Domain.Entity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MenuId { get; set; }
         public string MenuName { get; set; }
-        public ICollection<RoleMenuMapping> RoleMenuMappings { get; set; }
     }
 }

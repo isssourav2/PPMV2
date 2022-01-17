@@ -15,10 +15,6 @@ namespace PPMV2.Core.Domain.Entity
         public int Id { get; set; }
         public int RoleId { get; set; }
         public int MenuId { get; set; }
-        [ForeignKey("RoleId")]
-        public Role Roles { get; set; }
-        [ForeignKey("MenuId")]
-        public MenuMaster MenuMasters { get; set; }
     }
     
 }
