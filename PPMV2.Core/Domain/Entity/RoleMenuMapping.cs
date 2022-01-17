@@ -13,11 +13,13 @@ namespace PPMV2.Core.Domain.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public Nullable<int> RoleId { get; set; }
-        public Nullable<int> MenuId { get; set; }
-        //[ForeignKey("MenuId")]
-        //public virtual MenuMaster MenuMaster { get; set; }
-        //public virtual Role Role { get; set; }
+        public int RoleId { get; set; }
+        public int MenuId { get; set; }
+        [ForeignKey("RoleId")]
+        public Role Roles { get; set; }
+        [ForeignKey("MenuId")]
+        public MenuMaster MenuMasters { get; set; }
     }
+    
 }
     

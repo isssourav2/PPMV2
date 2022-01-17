@@ -23,5 +23,7 @@ namespace PPMV2.Core.Domain.Entity
         [NotMapped]
         public int? PermissionCount { get; set; }
 
+        public ICollection<RoleMenuMapping> RoleMenuMappings { get; set; }
+
     }
 }
