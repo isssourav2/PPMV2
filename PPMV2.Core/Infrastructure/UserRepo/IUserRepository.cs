@@ -14,6 +14,8 @@ namespace PPMV2.Core.Infrastructure.UserRepo
 
         Task<User> GetById(int id);
 
+        Task<User> GetByGuidId(Guid userid);
+
         Task Add(User entity);
 
         Task Update(User entity);

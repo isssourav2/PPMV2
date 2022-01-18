@@ -9,8 +9,16 @@ using System.Threading.Tasks;
 
 namespace PPMV2.Core.Infrastructure.UserRepo
 {
-    public class UserRepository: Repository<User>,IUserRepository
+    public class UserRepository : Repository<User>, IUserRepository
     {
-        
+        public async Task<User> GetByGuidId(Guid userid)
+        {
+            var user =  this.GetAll().Result.Where(en => en.UserId == userid).FirstOrDefault();
+            if (user == null)
+            {
+                throw new ArgumentNullException("FindResult");
+            }
+           return user;
+        }
     }
 }

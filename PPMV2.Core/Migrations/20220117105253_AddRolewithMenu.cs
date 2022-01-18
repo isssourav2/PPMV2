@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PPMV2.Core.Migrations
 {
-    public partial class ppmv2 : Migration
+    public partial class AddRolewithMenu : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,6 +20,20 @@ namespace PPMV2.Core.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MenuMasters", x => x.MenuId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RoleMenuMappings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<int>(type: "int", nullable: false),
+                    MenuId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RoleMenuMappings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -53,32 +67,6 @@ namespace PPMV2.Core.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RoleMenuMappings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<int>(type: "int", nullable: true),
-                    MenuId = table.Column<int>(type: "int", nullable: true),
-                    MenuMasterMenuId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RoleMenuMappings", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RoleMenuMappings_MenuMasters_MenuMasterMenuId",
-                        column: x => x.MenuMasterMenuId,
-                        principalTable: "MenuMasters",
-                        principalColumn: "MenuId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_RoleMenuMappings_Roles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "Roles",
-                        principalColumn: "RoleId");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -105,16 +93,6 @@ namespace PPMV2.Core.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_RoleMenuMappings_MenuMasterMenuId",
-                table: "RoleMenuMappings",
-                column: "MenuMasterMenuId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RoleMenuMappings_RoleId",
-                table: "RoleMenuMappings",
-                column: "RoleId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",
                 table: "Users",
                 column: "RoleId");
@@ -123,6 +101,9 @@ namespace PPMV2.Core.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "MenuMasters");
+
+            migrationBuilder.DropTable(
                 name: "RoleMenuMappings");
 
             migrationBuilder.DropTable(
@@ -130,9 +111,6 @@ namespace PPMV2.Core.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "MenuMasters");
 
             migrationBuilder.DropTable(
                 name: "Roles");

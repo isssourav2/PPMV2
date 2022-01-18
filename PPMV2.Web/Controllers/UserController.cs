@@ -40,14 +40,15 @@ namespace PPMV2.Web.Controllers
         [HttpPost]
         public async Task Post(User user)
         {
+            user.UserId=Guid.NewGuid();
             user.IsActive = true;
             user.EntryDate = DateTime.Now;
             await this._repo.Add(user);
         }
 
         // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public async Task Put(int id, User user)
+        [HttpPut]
+        public async Task Put(User user)
         {
             user.UpdateDate = DateTime.Now;
             await this._repo.Update(user);
@@ -55,9 +56,9 @@ namespace PPMV2.Web.Controllers
 
         // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task Delete(Guid id)
         {
-            var user = await this._repo.GetById(id);
+           var user = await this._repo.GetByGuidId(id);
             await this._repo.Delete(user);
         }
     }

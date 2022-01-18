@@ -12,8 +12,8 @@ using PPMV2.Core.Infrastructure.Repository;
 namespace PPMV2.Core.Migrations
 {
     [DbContext(typeof(PPMContext))]
-    [Migration("20220106144023_ppmv2")]
-    partial class ppmv2
+    [Migration("20220117105253_AddRolewithMenu")]
+    partial class AddRolewithMenu
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,20 +79,13 @@ namespace PPMV2.Core.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("MenuId")
+                    b.Property<int>("MenuId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MenuMasterMenuId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RoleId")
+                    b.Property<int>("RoleId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MenuMasterMenuId");
-
-                    b.HasIndex("RoleId");
 
                     b.ToTable("RoleMenuMappings");
                 });
@@ -157,23 +150,6 @@ namespace PPMV2.Core.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("PPMV2.Core.Domain.Entity.RoleMenuMapping", b =>
-                {
-                    b.HasOne("PPMV2.Core.Domain.Entity.MenuMaster", "MenuMaster")
-                        .WithMany()
-                        .HasForeignKey("MenuMasterMenuId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PPMV2.Core.Domain.Entity.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId");
-
-                    b.Navigation("MenuMaster");
-
-                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("PPMV2.Core.Domain.Entity.User", b =>
