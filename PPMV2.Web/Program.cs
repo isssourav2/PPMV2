@@ -3,6 +3,7 @@ using PPMV2.Core.Infrastructure.MenuRepo;
 using PPMV2.Core.Infrastructure.MenuwithRoleRepo;
 using PPMV2.Core.Infrastructure.Repository;
 using PPMV2.Core.Infrastructure.RoleRepo;
+using PPMV2.Core.Infrastructure.SourceRepo;
 using PPMV2.Core.Infrastructure.TagRepo;
 using PPMV2.Core.Infrastructure.UserRepo;
 
@@ -19,6 +20,7 @@ builder.Services.AddTransient<IRoleRepository, RoleRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IMenuRepository, MenuRepository>();
 builder.Services.AddTransient<IMenuwithRoleRepository, MenuwithRoleRepository>();
+builder.Services.AddTransient<ISourceRepository, SourceRepository>();
 
 var app = builder.Build();
 
