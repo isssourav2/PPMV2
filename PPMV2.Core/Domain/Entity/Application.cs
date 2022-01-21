@@ -13,13 +13,10 @@ namespace PPMV2.Core.Domain.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ApplicationId { get; set; }
-        [Column(TypeName = "varchar(60)")]
-        [Required]
         public string ApplicationName { get; set; }
-        [MaxLength(600)]
         public string ApplicationDescription { get; set; }
 
-        public DateTime? EntryDate { get; set; }
+        public DateTime EntryDate { get; set; }
         public DateTime? UpdateDate { get; set; }
     }
 }
