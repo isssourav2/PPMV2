@@ -41,7 +41,7 @@ namespace PPMV2.Web.Controllers
         public async Task Post(User user)
         {
             user.UserId=Guid.NewGuid();
-            //user.IsActive = true;
+            user.IsActive = true;
             user.EntryDate = DateTime.Now;
             await this._repo.Add(user);
         }
