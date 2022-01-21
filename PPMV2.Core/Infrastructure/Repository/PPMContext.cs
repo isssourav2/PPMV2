@@ -29,6 +29,8 @@ namespace PPMV2.Core.Infrastructure.Repository
         public DbSet<User> Users { get; set; }
         public DbSet<MenuMaster> MenuMasters { get; set; }
         public DbSet<RoleMenuMapping> RoleMenuMappings { get; set; }
+        public DbSet<Application> Application { get; set; }
+        
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Source> Sources { get; set; }
 
