@@ -32,6 +32,7 @@ namespace PPMV2.Core.Infrastructure.Repository
         public DbSet<Application> Application { get; set; }
         
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Source> Sources { get; set; }
 
     }   
 }

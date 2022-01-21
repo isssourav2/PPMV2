@@ -88,6 +88,44 @@ namespace PPMV2.Core.Migrations
                     b.ToTable("RoleMenuMappings");
                 });
 
+            modelBuilder.Entity("PPMV2.Core.Domain.Entity.Source", b =>
+                {
+                    b.Property<int>("SourceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SourceId"), 1L, 1);
+
+                    b.Property<DateTime>("EntryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SourceAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SourceEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SourceName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SourcePhone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("SourceId");
+
+                    b.ToTable("Sources");
+                });
+
             modelBuilder.Entity("PPMV2.Core.Domain.Entity.Tag", b =>
                 {
                     b.Property<int>("TagId")
@@ -107,7 +145,7 @@ namespace PPMV2.Core.Migrations
 
             modelBuilder.Entity("PPMV2.Core.Domain.Entity.User", b =>
                 {
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -145,20 +183,7 @@ namespace PPMV2.Core.Migrations
 
                     b.HasKey("UserId");
 
-                    b.HasIndex("RoleId");
-
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("PPMV2.Core.Domain.Entity.User", b =>
-                {
-                    b.HasOne("PPMV2.Core.Domain.Entity.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
                 });
 #pragma warning restore 612, 618
         }
