@@ -50,7 +50,7 @@ namespace PPMV2.Web.Controllers
         public async Task Post(Application Application)
         {
             try
-            {
+            { 
                 //Application.IsActive = true;
                 Application.EntryDate = DateTime.Now;
                 await this._repo.Add(Application);

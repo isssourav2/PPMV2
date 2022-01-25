@@ -12,8 +12,8 @@ using PPMV2.Core.Infrastructure.Repository;
 namespace PPMV2.Core.Migrations
 {
     [DbContext(typeof(PPMContext))]
-    [Migration("20220121093817_ApplicationAdded2")]
-    partial class ApplicationAdded2
+    [Migration("20220125075248_addmodeltodatabase")]
+    partial class addmodeltodatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,14 +34,13 @@ namespace PPMV2.Core.Migrations
 
                     b.Property<string>("ApplicationDescription")
                         .IsRequired()
-                        .HasMaxLength(600)
-                        .HasColumnType("nvarchar(600)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ApplicationName")
                         .IsRequired()
-                        .HasColumnType("varchar(60)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("EntryDate")
+                    b.Property<DateTime>("EntryDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("UpdateDate")
@@ -49,7 +48,55 @@ namespace PPMV2.Core.Migrations
 
                     b.HasKey("ApplicationId");
 
-                    b.ToTable("Application");
+                    b.ToTable("Applications");
+                });
+
+            modelBuilder.Entity("PPMV2.Core.Domain.Entity.EmailSetting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<Guid?>("EntryBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("EntryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("From")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Host")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Port")
+                        .HasColumnType("int");
+
+                    b.Property<string>("To")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("UpdateBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmailSettings");
                 });
 
             modelBuilder.Entity("PPMV2.Core.Domain.Entity.MenuMaster", b =>
@@ -116,6 +163,75 @@ namespace PPMV2.Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("RoleMenuMappings");
+                });
+
+            modelBuilder.Entity("PPMV2.Core.Domain.Entity.SchedulerSetting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<Guid?>("EntryBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("EntryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ScheduleTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TimeInterval")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("UpdateBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SchedulerSettings");
+                });
+
+            modelBuilder.Entity("PPMV2.Core.Domain.Entity.Source", b =>
+                {
+                    b.Property<int>("SourceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SourceId"), 1L, 1);
+
+                    b.Property<DateTime>("EntryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SourceAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SourceEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SourceName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SourcePhone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("SourceId");
+
+                    b.ToTable("Sources");
                 });
 
             modelBuilder.Entity("PPMV2.Core.Domain.Entity.Tag", b =>

@@ -33,6 +33,7 @@ namespace PPMV2.Core.Infrastructure.Repository
         
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Source> Sources { get; set; }
-
+        public DbSet<EmailSetting> EmailSettings { get; set; }
+        public DbSet<SchedulerSetting> SchedulerSettings { get; set; }
     }   
 }

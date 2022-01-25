@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using PPMV2.Core.Infrastructure.ApplicationRepo;
+using PPMV2.Core.Infrastructure.EmailSettingRepo;
 using PPMV2.Core.Infrastructure.MenuRepo;
 using PPMV2.Core.Infrastructure.MenuwithRoleRepo;
 using PPMV2.Core.Infrastructure.Repository;
 using PPMV2.Core.Infrastructure.RoleRepo;
+using PPMV2.Core.Infrastructure.SchedulerSettingRepo;
 using PPMV2.Core.Infrastructure.SourceRepo;
 using PPMV2.Core.Infrastructure.TagRepo;
 using PPMV2.Core.Infrastructure.UserRepo;
@@ -23,7 +25,8 @@ builder.Services.AddTransient<IMenuRepository, MenuRepository>();
 builder.Services.AddTransient<IApplicationRepository, ApplicationRepository>();
 builder.Services.AddTransient<IMenuwithRoleRepository, MenuwithRoleRepository>();
 builder.Services.AddTransient<ISourceRepository, SourceRepository>();
-
+builder.Services.AddTransient<IEmailSettingRepository, EmailSettingRepository>();
+builder.Services.AddTransient<ISchedulerSettingRepository, SchedulerSettingRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
