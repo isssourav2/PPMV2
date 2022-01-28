@@ -35,6 +35,19 @@ namespace PPMV2.Web.Controllers
             }
         }
 
+        [HttpGet("GetSettings")]
+        public async Task<SchedulerSetting> GetSettings()
+        {
+            try
+            {
+                return  this._repo.GetAll().Result.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         // POST api/<SchedulerSettingController>
         [HttpPost]
         public async Task Post(SchedulerSetting schedulerSetting)

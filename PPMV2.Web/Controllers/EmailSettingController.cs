@@ -36,6 +36,19 @@ namespace PPMV2.Web.Controllers
             }
         }
 
+        [HttpGet("GetEmailSetting")]
+        public async Task<EmailSetting> GetEmailSetting()
+        {
+            try
+            {
+                return this._repo.GetAll().Result.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         // POST api/<EmailSettingController>
         [HttpPost]
         public async Task Post(EmailSetting emailSetting)
