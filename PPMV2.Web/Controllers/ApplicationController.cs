@@ -35,7 +35,7 @@ namespace PPMV2.Web.Controllers
         [HttpPut]
         public async Task Put(Application Application)
         {
-            Application.UpdateDate = DateTime.Now;
+           // Application.UpdatedDate = DateTime.Now;
             await this._repo.Update(Application);
         }
         //get user by Application Id
@@ -52,7 +52,7 @@ namespace PPMV2.Web.Controllers
             try
             { 
                 //Application.IsActive = true;
-                Application.EntryDate = DateTime.Now;
+                //Application.CreatedDate = DateTime.Now;
                 await this._repo.Add(Application);
             }
             catch (Exception ex)

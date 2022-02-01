@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using PPMV2.Core.Domain.Entity;
 using PPMV2.Core.Infrastructure.Interface;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PPMV2.Core.Infrastructure.Repository
 {
-    public class Repository<T> : IRepository<T> where T : class,new()
+    public class Repository<T> : IRepository<T> where T : BaseEntity,new()
     {
         protected readonly PPMContext _context;
         protected DbSet<T> entity;
@@ -42,6 +43,7 @@ namespace PPMV2.Core.Infrastructure.Repository
             {
                 throw new ArgumentNullException("entity");
             }
+            entity.CreatedDate = DateTime.Now;
             this.entity.Add(entity);
             await _context.SaveChangesAsync();
         }
@@ -52,6 +54,7 @@ namespace PPMV2.Core.Infrastructure.Repository
             {
                 throw new ArgumentNullException("entity");
             }
+            entity.UpdatedDate = DateTime.Now;
             this._context.Entry<T>(entity).State= EntityState.Modified;
             await this._context.SaveChangesAsync();
 

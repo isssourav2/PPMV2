@@ -54,7 +54,7 @@ namespace PPMV2.Web.Controllers
         {
             try
             {
-                schedulerSetting.EntryDate = DateTime.Now;
+                //schedulerSetting.CreatedDate = DateTime.Now;
                 await this._repo.Add(schedulerSetting);
             }
             catch (Exception ex)
@@ -69,7 +69,7 @@ namespace PPMV2.Web.Controllers
         {
             try
             {
-                schedulerSetting.UpdateDate = DateTime.Now;
+               // schedulerSetting.UpdatedDate = DateTime.Now;
                 await this._repo.Update(schedulerSetting);
             }
             catch (Exception ex)

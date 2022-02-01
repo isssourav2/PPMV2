@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PPMV2.Core.Domain.Entity
 {
-    public class Role
+    public class Role : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,8 +16,6 @@ namespace PPMV2.Core.Domain.Entity
         public string RoleName { get; set; }
         public string RoleDescription { get; set; }
         public bool IsActive { get; set; }
-        public DateTime EntryDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
         [NotMapped]
         public int? userCount { get; set; }
         [NotMapped]

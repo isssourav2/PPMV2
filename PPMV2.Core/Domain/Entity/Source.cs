@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PPMV2.Core.Domain.Entity
 {
-    public class Source
+    public class Source : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -18,7 +18,6 @@ namespace PPMV2.Core.Domain.Entity
         public string SourceEmail { get; set; }
         public string SourcePhone { get; set; }
         public bool IsActive { get; set; }
-        public DateTime EntryDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
+      
     }
 }

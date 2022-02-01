@@ -42,7 +42,7 @@ namespace PPMV2.Web.Controllers
         {
             user.UserId=Guid.NewGuid();
             user.IsActive = true;
-            user.EntryDate = DateTime.Now;
+            //user.CreatedDate = DateTime.Now;
             await this._repo.Add(user);
         }
 
@@ -50,7 +50,7 @@ namespace PPMV2.Web.Controllers
         [HttpPut]
         public async Task Put(User user)
         {
-            user.UpdateDate = DateTime.Now;
+            //user.UpdatedDate = DateTime.Now;
             await this._repo.Update(user);
         }
 

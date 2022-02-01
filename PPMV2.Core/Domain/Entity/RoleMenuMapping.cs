@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PPMV2.Core.Domain.Entity
 {
-    public class RoleMenuMapping
+    public class RoleMenuMapping : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

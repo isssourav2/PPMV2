@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PPMV2.Core.Domain.Entity
 {
-    public class SchedulerSetting
+    public class SchedulerSetting : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,11 +16,6 @@ namespace PPMV2.Core.Domain.Entity
         public DateTime? ScheduleTime { get; set; }
         public decimal? TimeInterval { get;set; }
 
-        //common part
-        public DateTime? EntryDate { get; set; }
-        public Guid? EntryBy { get; set; }
-
-        public DateTime? UpdateDate { get; set; }
-        public Guid? UpdateBy { get; set; }
+       
     }
 }

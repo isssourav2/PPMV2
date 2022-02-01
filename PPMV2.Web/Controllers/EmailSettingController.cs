@@ -55,7 +55,7 @@ namespace PPMV2.Web.Controllers
         {
             try
             {
-                emailSetting.EntryDate = DateTime.Now;
+               // emailSetting.CreatedDate = DateTime.Now;
                 await this._repo.Add(emailSetting);
             }
             catch (Exception ex)
@@ -70,7 +70,7 @@ namespace PPMV2.Web.Controllers
         {
             try
             {
-                emailSetting.UpdateDate = DateTime.Now;
+                //emailSetting.UpdatedDate = DateTime.Now;
                 await this._repo.Update(emailSetting);
             }
             catch (Exception ex)

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PPMV2.Core.Domain.Entity
 {
-    public class Application
+    public class Application:BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,7 +16,5 @@ namespace PPMV2.Core.Domain.Entity
         public string ApplicationName { get; set; }
         public string ApplicationDescription { get; set; }
 
-        public DateTime EntryDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
     }
 }

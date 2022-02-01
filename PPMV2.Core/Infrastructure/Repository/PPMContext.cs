@@ -24,6 +24,8 @@ namespace PPMV2.Core.Infrastructure.Repository
         {
             // connect to sql server with connection string from app settings
             options.UseSqlServer(this._ConnectionString);
+           // Database.Migrate();
+
         }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
@@ -35,5 +37,7 @@ namespace PPMV2.Core.Infrastructure.Repository
         public DbSet<Source> Sources { get; set; }
         public DbSet<EmailSetting> EmailSettings { get; set; }
         public DbSet<SchedulerSetting> SchedulerSettings { get; set; }
+        public DbSet<Connection> Connections { get; set; }
+        
     }   
 }

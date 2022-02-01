@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PPMV2.Core.Infrastructure.ApplicationRepo;
+using PPMV2.Core.Infrastructure.ConnectionRepo;
 using PPMV2.Core.Infrastructure.EmailSettingRepo;
 using PPMV2.Core.Infrastructure.MenuRepo;
 using PPMV2.Core.Infrastructure.MenuwithRoleRepo;
@@ -14,6 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -27,7 +30,11 @@ builder.Services.AddTransient<IMenuwithRoleRepository, MenuwithRoleRepository>()
 builder.Services.AddTransient<ISourceRepository, SourceRepository>();
 builder.Services.AddTransient<IEmailSettingRepository, EmailSettingRepository>();
 builder.Services.AddTransient<ISchedulerSettingRepository, SchedulerSettingRepository>();
+builder.Services.AddTransient<IConnectionRepository, ConnectionRepository>();
 var app = builder.Build();
+
+//database migration
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

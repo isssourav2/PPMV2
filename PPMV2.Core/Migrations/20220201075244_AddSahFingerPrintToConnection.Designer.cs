@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PPMV2.Core.Infrastructure.Repository;
 
@@ -11,9 +12,10 @@ using PPMV2.Core.Infrastructure.Repository;
 namespace PPMV2.Core.Migrations
 {
     [DbContext(typeof(PPMContext))]
-    partial class PPMContextModelSnapshot : ModelSnapshot
+    [Migration("20220201075244_AddSahFingerPrintToConnection")]
+    partial class AddSahFingerPrintToConnection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

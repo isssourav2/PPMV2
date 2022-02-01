@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PPMV2.Core.Domain.Entity
 {
-    public class User
+    public class User : BaseEntity
     {
         public System.Guid? UserId { get; set; }
         public string UserName { get; set; }
@@ -19,8 +19,7 @@ namespace PPMV2.Core.Domain.Entity
         [NotMapped]
         public string RoleName { get; set; }
         public bool IsActive { get; set; } 
-        public DateTime EntryDate { get; set; } 
-        public DateTime? UpdateDate { get; set; }
+    
 
     }
 }

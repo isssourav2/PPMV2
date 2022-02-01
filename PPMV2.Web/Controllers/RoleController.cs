@@ -47,7 +47,7 @@ namespace PPMV2.Web.Controllers
         [HttpPut]
         public async Task Put(Role role)
         {
-            role.UpdateDate= DateTime.Now;
+            //role.UpdatedDate= DateTime.Now;
             await this._repo.Update(role);
         }
         //get user by Role Id
@@ -64,7 +64,7 @@ namespace PPMV2.Web.Controllers
             try
             { 
             role.IsActive= true;
-            role.EntryDate= DateTime.Now;
+          //  role.CreatedDate= DateTime.Now;
             await this._repo.Add(role);
             }
             catch (Exception ex)

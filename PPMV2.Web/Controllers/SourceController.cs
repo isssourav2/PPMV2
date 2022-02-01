@@ -37,7 +37,7 @@ namespace PPMV2.Web.Controllers
         public async Task Post(Source source)
         {
             source.IsActive = true;
-            source.EntryDate = DateTime.Now;
+            //source.CreatedDate = DateTime.Now;
             await this._repo.Add(source);
         }
 
@@ -48,7 +48,7 @@ namespace PPMV2.Web.Controllers
             
             source.IsActive=true;
             //source.EntryDate = DateTime.Now;
-            source.UpdateDate = DateTime.Now;
+           // source.UpdatedDate = DateTime.Now;
             await this._repo.Update(source);
         }
 
