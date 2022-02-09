@@ -5,6 +5,7 @@ using PPMV2.Core.Infrastructure.EmailSettingRepo;
 using PPMV2.Core.Infrastructure.MenuRepo;
 using PPMV2.Core.Infrastructure.MenuwithRoleRepo;
 using PPMV2.Core.Infrastructure.Repository;
+using PPMV2.Core.Infrastructure.RiskCoreTemplates;
 using PPMV2.Core.Infrastructure.RoleRepo;
 using PPMV2.Core.Infrastructure.SchedulerSettingRepo;
 using PPMV2.Core.Infrastructure.SourceRepo;
@@ -31,6 +32,7 @@ builder.Services.AddTransient<ISourceRepository, SourceRepository>();
 builder.Services.AddTransient<IEmailSettingRepository, EmailSettingRepository>();
 builder.Services.AddTransient<ISchedulerSettingRepository, SchedulerSettingRepository>();
 builder.Services.AddTransient<IConnectionRepository, ConnectionRepository>();
+builder.Services.AddTransient<IRiskCoreTemplateRepository, RiskCoreTemplateRepository>();
 var app = builder.Build();
 
 //database migration

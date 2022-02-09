@@ -38,6 +38,8 @@ namespace PPMV2.Core.Infrastructure.Repository
         public DbSet<EmailSetting> EmailSettings { get; set; }
         public DbSet<SchedulerSetting> SchedulerSettings { get; set; }
         public DbSet<Connection> Connections { get; set; }
+        public DbSet<RiskCoreImportTemplate> RiskCoreImportTemplates { get; set; }
         
+
     }   
 }
