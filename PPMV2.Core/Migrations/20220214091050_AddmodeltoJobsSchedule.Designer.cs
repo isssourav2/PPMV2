@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PPMV2.Core.Infrastructure.Repository;
 
@@ -11,9 +12,10 @@ using PPMV2.Core.Infrastructure.Repository;
 namespace PPMV2.Core.Migrations
 {
     [DbContext(typeof(PPMContext))]
-    partial class PPMContextModelSnapshot : ModelSnapshot
+    [Migration("20220214091050_AddmodeltoJobsSchedule")]
+    partial class AddmodeltoJobsSchedule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,68 +196,6 @@ namespace PPMV2.Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FileProcessingTemplates");
-                });
-
-            modelBuilder.Entity("PPMV2.Core.Domain.Entity.FileRead", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("BasedOn")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CellOrHeader")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CellOrHeaderValue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CheckIn")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DearchValue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("FileProcessingTemplateId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Operation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ReadFromNextColCell")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SheetName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("UpdatedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FileProcessingTemplateId");
-
-                    b.ToTable("FileReads");
                 });
 
             modelBuilder.Entity("PPMV2.Core.Domain.Entity.MenuMaster", b =>
@@ -544,17 +484,6 @@ namespace PPMV2.Core.Migrations
                     b.HasOne("PPMV2.Core.Domain.Entity.FileProcessingTemplates", null)
                         .WithMany("Applications")
                         .HasForeignKey("FileProcessingTemplatesId");
-                });
-
-            modelBuilder.Entity("PPMV2.Core.Domain.Entity.FileRead", b =>
-                {
-                    b.HasOne("PPMV2.Core.Domain.Entity.FileProcessingTemplates", "FileProcessingTemplate")
-                        .WithMany()
-                        .HasForeignKey("FileProcessingTemplateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FileProcessingTemplate");
                 });
 
             modelBuilder.Entity("PPMV2.Core.Domain.Entity.Tag", b =>

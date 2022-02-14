@@ -39,7 +39,9 @@ namespace PPMV2.Core.Infrastructure.Repository
         public DbSet<SchedulerSetting> SchedulerSettings { get; set; }
         public DbSet<Connection> Connections { get; set; }
         public DbSet<RiskCoreImportTemplate> RiskCoreImportTemplates { get; set; }
-        
+
+        public DbSet<FileProcessingTemplates> FileProcessingTemplates { get; set; }
+        public DbSet<FileRead> FileReads { get; set; }
 
     }   
 }
