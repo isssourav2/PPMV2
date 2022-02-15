@@ -13,7 +13,7 @@ namespace PPMV2.Core.Domain.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public DateTime? ScheduleTime { get; set; }
+        public string? ScheduleTime { get; set; }
         public decimal? TimeInterval { get;set; }
 
        
