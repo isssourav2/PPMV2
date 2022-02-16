@@ -14,6 +14,7 @@ namespace PPMV2.Core.Domain.Entity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
+        public string? ConnectionType { get; set; }
         public string Source { get; set; }
         public string Protocol { get; set; }
         public string Host { get; set; }

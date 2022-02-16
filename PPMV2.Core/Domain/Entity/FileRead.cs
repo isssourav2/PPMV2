@@ -25,7 +25,7 @@ namespace PPMV2.Core.Domain.Entity
 
         public string Operation { get; set; }
 
-        public string DearchValue { get; set; }
+        public string SearchValue { get; set; }
 
         public string ReadFromNextColCell { get; set; }
 
