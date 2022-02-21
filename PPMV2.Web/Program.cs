@@ -4,6 +4,7 @@ using PPMV2.Core.Infrastructure.ConnectionRepo;
 using PPMV2.Core.Infrastructure.EmailSettingRepo;
 using PPMV2.Core.Infrastructure.FileProcessingTemplateRepo;
 using PPMV2.Core.Infrastructure.FileReadingIndentification;
+using PPMV2.Core.Infrastructure.FileValid;
 using PPMV2.Core.Infrastructure.MenuRepo;
 using PPMV2.Core.Infrastructure.MenuwithRoleRepo;
 using PPMV2.Core.Infrastructure.Repository;
@@ -37,6 +38,7 @@ builder.Services.AddTransient<IConnectionRepository, ConnectionRepository>();
 builder.Services.AddTransient<IRiskCoreTemplateRepository, RiskCoreTemplateRepository>();
 builder.Services.AddTransient<IFileProcessingTemplate, FileProcessingTemplate>();
 builder.Services.AddTransient<IFileReadRepository, FileReadRepository>();
+builder.Services.AddTransient<IFileValidationRepository, FileValidationRepository>();
 var app = builder.Build();
 //database migration
 
