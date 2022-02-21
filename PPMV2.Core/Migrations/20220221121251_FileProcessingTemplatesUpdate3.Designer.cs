@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PPMV2.Core.Infrastructure.Repository;
 
@@ -11,9 +12,10 @@ using PPMV2.Core.Infrastructure.Repository;
 namespace PPMV2.Core.Migrations
 {
     [DbContext(typeof(PPMContext))]
-    partial class PPMContextModelSnapshot : ModelSnapshot
+    [Migration("20220221121251_FileProcessingTemplatesUpdate3")]
+    partial class FileProcessingTemplatesUpdate3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -205,8 +207,8 @@ namespace PPMV2.Core.Migrations
                     b.Property<int>("RiskCoreImportTemplateId")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("RiskCoreTemplateId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("RiskCoreTemplateId")
+                        .HasColumnType("int");
 
                     b.Property<int>("TagId")
                         .HasColumnType("int");

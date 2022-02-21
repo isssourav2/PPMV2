@@ -27,9 +27,14 @@ namespace PPMV2.Core.Domain.Entity
 
         public int TagId { get; set; }
         public int ApplicationId { get; set; }
-
+        [NotMapped]
+        public string? Tag { get; set; }
+        [NotMapped]
+        public string? Application { get; set; }
         public List<Tag> Tags { get; set; }
         public List<Application> Applications { get; set; }
+        [NotMapped]
+        public string? RiskCoreTemplate { get; set; }
         public int RiskCoreTemplateId { get; set; }
     }
 }
