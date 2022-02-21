@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PPMV2.Core.Domain.Entity;
+using PPMV2.Core.Infrastructure.ApplicationRepo;
 using PPMV2.Core.Infrastructure.FileProcessingTemplateRepo;
 
 namespace PPMV2.Web.Controllers
@@ -10,9 +11,10 @@ namespace PPMV2.Web.Controllers
     public class FileProcessingTemplateController : ControllerBase
     {
         private readonly IFileProcessingTemplate _repo;
+        private IApplicationRepository _apprepo;
 
 
-        public FileProcessingTemplateController(IFileProcessingTemplate repo)
+        public FileProcessingTemplateController(IFileProcessingTemplate repo, IApplicationRepository apprepo)
         {
             // _context = context;
             this._repo = repo;
@@ -22,6 +24,15 @@ namespace PPMV2.Web.Controllers
         [HttpGet]
         public async Task<IEnumerable<FileProcessingTemplates>> Get()
         {
+            //List<FileProcessingTemplates> FileProcessTems = new List<FileProcessingTemplates>();
+            //IEnumerable<FileProcessingTemplates> filepTemplates = await this._repo.GetAll();
+            //foreach (var item in filepTemplates)
+            //{
+            //    //FileProcessingTemplates temp1 = new FileProcessingTemplates();
+
+
+            //} 
+            //return FileProcessTems;
             return await this._repo.GetAll();
         }
 
