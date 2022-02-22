@@ -4,7 +4,7 @@
 
 namespace PPMV2.Core.Migrations
 {
-    public partial class FileProcessingTemplatesUpdate3 : Migration
+    public partial class AddModelToFileProcessing1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

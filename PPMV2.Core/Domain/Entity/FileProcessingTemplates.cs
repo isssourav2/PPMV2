@@ -13,7 +13,7 @@ namespace PPMV2.Core.Domain.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int RiskCoreImportTemplateId { get; set; }
+        public int? RiskCoreImportTemplateId { get; set; }
 
         public string FileProcessingTemplateName { get; set; }
         public string CSVDelimiter { get; set; }
@@ -31,8 +31,8 @@ namespace PPMV2.Core.Domain.Entity
         public string? Tag { get; set; }
         [NotMapped]
         public string? Application { get; set; }
-        public List<Tag> Tags { get; set; }
-        public List<Application> Applications { get; set; }
+        //public List<Tag> Tags { get; set; }
+        //public List<Application> Applications { get; set; }
         [NotMapped]
         public string? RiskCoreTemplate { get; set; }
         public int RiskCoreTemplateId { get; set; }
