@@ -12,8 +12,8 @@ using PPMV2.Core.Infrastructure.Repository;
 namespace PPMV2.Core.Migrations
 {
     [DbContext(typeof(PPMContext))]
-    [Migration("20220215123621_AddCreateContext")]
-    partial class AddCreateContext
+    [Migration("20220222071103_AddModelToFileProcessing1")]
+    partial class AddModelToFileProcessing1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,9 +46,6 @@ namespace PPMV2.Core.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("FileProcessingTemplatesId")
-                        .HasColumnType("int");
-
                     b.Property<Guid?>("UpdatedBy")
                         .HasColumnType("uniqueidentifier");
 
@@ -56,8 +53,6 @@ namespace PPMV2.Core.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("ApplicationId");
-
-                    b.HasIndex("FileProcessingTemplatesId");
 
                     b.ToTable("Applications");
                 });
@@ -69,6 +64,9 @@ namespace PPMV2.Core.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ConnectionType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("CreatedBy")
                         .HasColumnType("uniqueidentifier");
@@ -174,24 +172,54 @@ namespace PPMV2.Core.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("ApplicationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CSVDelimiter")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid?>("CreatedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("JobName")
+                    b.Property<string>("FileProcessingTemplateName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsManipulation")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PreprocessedDeliveryPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RiskCoreImportTemplateId")
+                        .HasColumnType("int");
+
                     b.Property<int>("RiskCoreTemplateId")
                         .HasColumnType("int");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TextDelimiter")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("UpdatedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -228,10 +256,6 @@ namespace PPMV2.Core.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("DearchValue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("FileProcessingTemplateId")
                         .HasColumnType("int");
 
@@ -240,6 +264,10 @@ namespace PPMV2.Core.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ReadFromNextColCell")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SearchValue")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -291,9 +319,11 @@ namespace PPMV2.Core.Migrations
 
             modelBuilder.Entity("PPMV2.Core.Domain.Entity.RiskCoreImportTemplate", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<Guid?>("CreatedBy")
                         .HasColumnType("uniqueidentifier");
@@ -472,9 +502,6 @@ namespace PPMV2.Core.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("FileProcessingTemplatesId")
-                        .HasColumnType("int");
-
                     b.Property<string>("TagName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -486,8 +513,6 @@ namespace PPMV2.Core.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("TagId");
-
-                    b.HasIndex("FileProcessingTemplatesId");
 
                     b.ToTable("Tags");
                 });
@@ -541,13 +566,6 @@ namespace PPMV2.Core.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("PPMV2.Core.Domain.Entity.Application", b =>
-                {
-                    b.HasOne("PPMV2.Core.Domain.Entity.FileProcessingTemplates", null)
-                        .WithMany("Applications")
-                        .HasForeignKey("FileProcessingTemplatesId");
-                });
-
             modelBuilder.Entity("PPMV2.Core.Domain.Entity.FileRead", b =>
                 {
                     b.HasOne("PPMV2.Core.Domain.Entity.FileProcessingTemplates", "FileProcessingTemplate")
@@ -557,20 +575,6 @@ namespace PPMV2.Core.Migrations
                         .IsRequired();
 
                     b.Navigation("FileProcessingTemplate");
-                });
-
-            modelBuilder.Entity("PPMV2.Core.Domain.Entity.Tag", b =>
-                {
-                    b.HasOne("PPMV2.Core.Domain.Entity.FileProcessingTemplates", null)
-                        .WithMany("Tags")
-                        .HasForeignKey("FileProcessingTemplatesId");
-                });
-
-            modelBuilder.Entity("PPMV2.Core.Domain.Entity.FileProcessingTemplates", b =>
-                {
-                    b.Navigation("Applications");
-
-                    b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
         }
