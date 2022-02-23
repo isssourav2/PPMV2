@@ -13,7 +13,8 @@ namespace PPMV2.Core.Domain.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public FileProcessingTemplates FileProcessingTemplate { get; set; }
+        public int FileProcessingTemplateId { get; set; }
+        //public FileProcessingTemplates FileProcessingTemplate { get; set; }
 
         public string BasedOn { get; set; }
 
@@ -30,5 +31,8 @@ namespace PPMV2.Core.Domain.Entity
         public string ReadFromNextColCell { get; set; }
 
         public string SheetName { get; set; }
+
+
+
     }
 }
