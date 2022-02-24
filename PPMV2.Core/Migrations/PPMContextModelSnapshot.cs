@@ -327,6 +327,23 @@ namespace PPMV2.Core.Migrations
                     b.ToTable("FileReads");
                 });
 
+            modelBuilder.Entity("PPMV2.Core.Domain.Entity.FrequencyTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("FrequencyTagName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FrequencyTags");
+                });
+
             modelBuilder.Entity("PPMV2.Core.Domain.Entity.MenuMaster", b =>
                 {
                     b.Property<int>("MenuId")
@@ -373,6 +390,9 @@ namespace PPMV2.Core.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RiskName")
+                        .HasColumnType("int");
 
                     b.Property<Guid?>("UpdatedBy")
                         .HasColumnType("uniqueidentifier");
