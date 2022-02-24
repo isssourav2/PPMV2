@@ -42,6 +42,8 @@ namespace PPMV2.Core.Infrastructure.Repository
 
         public DbSet<FileProcessingTemplates> FileProcessingTemplates { get; set; }
         public DbSet<FileRead> FileReads { get; set; }
+        public DbSet<FrequencyTag> FrequencyTags { get; set; }
+        
 
     }   
 }

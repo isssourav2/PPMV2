@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace PPMV2.Core.Domain.Entity
 {
-    public class RiskCoreImportTemplate : BaseEntity
+    public class FrequencyTag
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int RiskName { get; set; }
+        public string FrequencyTagName { get; set; }
 
     }
 }
