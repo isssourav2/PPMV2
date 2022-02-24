@@ -162,6 +162,49 @@ namespace PPMV2.Core.Migrations
                     b.ToTable("EmailSettings");
                 });
 
+            modelBuilder.Entity("PPMV2.Core.Domain.Entity.FileProcessingTemplateFormulaField", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<Guid?>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("FileProcessingTemplateId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Formula")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FormulaFieldDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FormulaFieldName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("UpdatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FileProcessingTemplateFormulaFields");
+                });
+
             modelBuilder.Entity("PPMV2.Core.Domain.Entity.FileProcessingTemplates", b =>
                 {
                     b.Property<int>("Id")
@@ -280,8 +323,6 @@ namespace PPMV2.Core.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FileProcessingTemplateId");
 
                     b.ToTable("FileReads");
                 });
@@ -562,17 +603,6 @@ namespace PPMV2.Core.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("PPMV2.Core.Domain.Entity.FileRead", b =>
-                {
-                    b.HasOne("PPMV2.Core.Domain.Entity.FileProcessingTemplates", "FileProcessingTemplate")
-                        .WithMany()
-                        .HasForeignKey("FileProcessingTemplateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FileProcessingTemplate");
                 });
 #pragma warning restore 612, 618
         }

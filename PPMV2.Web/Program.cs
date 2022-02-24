@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PPMV2.Core.Infrastructure.ApplicationRepo;
 using PPMV2.Core.Infrastructure.ConnectionRepo;
 using PPMV2.Core.Infrastructure.EmailSettingRepo;
+using PPMV2.Core.Infrastructure.FileProcessingTemplateFormulaFieldRepo;
 using PPMV2.Core.Infrastructure.FileProcessingTemplateRepo;
 using PPMV2.Core.Infrastructure.FileReadingIndentification;
 using PPMV2.Core.Infrastructure.FileValid;
@@ -39,6 +40,7 @@ builder.Services.AddTransient<IRiskCoreTemplateRepository, RiskCoreTemplateRepos
 builder.Services.AddTransient<IFileProcessingTemplate, FileProcessingTemplate>();
 builder.Services.AddTransient<IFileReadRepository, FileReadRepository>();
 builder.Services.AddTransient<IFileValidationRepository, FileValidationRepository>();
+builder.Services.AddTransient<IFileProcessingTemplateFormulaFieldRepository, FileProcessingTemplateFormulaFieldRepository>();
 var app = builder.Build();
 //database migration
 
