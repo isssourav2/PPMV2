@@ -13,7 +13,8 @@ namespace PPMV2.Core.Domain.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public FileProcessingTemplates FileProcessingTemplate { get; set; }
+        public int FileProcessingTemplateId { get; set; }
+        //public FileProcessingTemplates FileProcessingTemplate { get; set; }
 
         public string? ColumnOrder { get; set; }
         public string? ColumnName { get; set; }
