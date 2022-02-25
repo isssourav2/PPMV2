@@ -36,8 +36,8 @@ namespace PPMV2.Web.Controllers
             {
                 //FileProcessingTemplates temp1 = new FileProcessingTemplates();
 
-                item.Tag = this._tagRepo.GetById(item.TagId).Result.TagName;
-                item.Application = this._apprepo.GetById(item.TagId).Result.ApplicationName;
+                //item.Tag = this._tagRepo.GetById(item.TagId).Result.TagName;
+                //item.Application = this._apprepo.GetById(item.TagId).Result.ApplicationName;
                //item.RiskCoreTemplate = this._riskCoreRepo.GetById(item.RiskCoreTemplateId).Result.Name;
                 FileProcessTems.Add(item);
             }
@@ -63,9 +63,13 @@ namespace PPMV2.Web.Controllers
         // POST: api/Tag
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task Post(FileProcessingTemplates tag)
+        public async Task<Message> Post(FileProcessingTemplates tag)
         {
+            Message mes = new Message();
             await this._repo.Add(tag);
+            mes.message = tag.Id.ToString();
+            mes.Count = 1;
+            return mes;
         }
 
         // DELETE: api/Tag/5

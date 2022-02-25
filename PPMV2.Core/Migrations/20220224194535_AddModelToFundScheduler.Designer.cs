@@ -12,8 +12,8 @@ using PPMV2.Core.Infrastructure.Repository;
 namespace PPMV2.Core.Migrations
 {
     [DbContext(typeof(PPMContext))]
-    [Migration("20220223115207_AddRiskcoreTemplate")]
-    partial class AddRiskcoreTemplate
+    [Migration("20220224194535_AddModelToFundScheduler")]
+    partial class AddModelToFundScheduler
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -164,6 +164,49 @@ namespace PPMV2.Core.Migrations
                     b.ToTable("EmailSettings");
                 });
 
+            modelBuilder.Entity("PPMV2.Core.Domain.Entity.FileProcessingTemplateFormulaField", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<Guid?>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("FileProcessingTemplateId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Formula")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FormulaFieldDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FormulaFieldName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("UpdatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FileProcessingTemplateFormulaFields");
+                });
+
             modelBuilder.Entity("PPMV2.Core.Domain.Entity.FileProcessingTemplates", b =>
                 {
                     b.Property<int>("Id")
@@ -267,6 +310,10 @@ namespace PPMV2.Core.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("SName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SearchValue")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -284,6 +331,66 @@ namespace PPMV2.Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FileReads");
+                });
+
+            modelBuilder.Entity("PPMV2.Core.Domain.Entity.FrequencyTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("FrequencyTagName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FrequencyTags");
+                });
+
+            modelBuilder.Entity("PPMV2.Core.Domain.Entity.FundScheduler", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("AsAt")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FileProcessingTemplateId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FrequencyTagId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FromTo")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FromToRange")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("UpdatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FundSchedulers");
                 });
 
             modelBuilder.Entity("PPMV2.Core.Domain.Entity.MenuMaster", b =>

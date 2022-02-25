@@ -2,10 +2,16 @@ using Microsoft.EntityFrameworkCore;
 using PPMV2.Core.Infrastructure.ApplicationRepo;
 using PPMV2.Core.Infrastructure.ConnectionRepo;
 using PPMV2.Core.Infrastructure.EmailSettingRepo;
+using PPMV2.Core.Infrastructure.FFetch;
 using PPMV2.Core.Infrastructure.FileProcessingTemplateFormulaFieldRepo;
 using PPMV2.Core.Infrastructure.FileProcessingTemplateRepo;
 using PPMV2.Core.Infrastructure.FileReadingIndentification;
 using PPMV2.Core.Infrastructure.FileValid;
+using PPMV2.Core.Infrastructure.FManipulation;
+using PPMV2.Core.Infrastructure.FPassword;
+using PPMV2.Core.Infrastructure.FProcessingTemplateDMSApplication;
+using PPMV2.Core.Infrastructure.FProcessingTemplateTagMapping;
+using PPMV2.Core.Infrastructure.FundSch;
 using PPMV2.Core.Infrastructure.MenuRepo;
 using PPMV2.Core.Infrastructure.MenuwithRoleRepo;
 using PPMV2.Core.Infrastructure.Repository;
@@ -41,17 +47,30 @@ builder.Services.AddTransient<IFileProcessingTemplate, FileProcessingTemplate>()
 builder.Services.AddTransient<IFileReadRepository, FileReadRepository>();
 builder.Services.AddTransient<IFileValidationRepository, FileValidationRepository>();
 builder.Services.AddTransient<IFileProcessingTemplateFormulaFieldRepository, FileProcessingTemplateFormulaFieldRepository>();
+builder.Services.AddTransient<IFundSchedulerRepository, FundSchedulerRepository>();
+builder.Services.AddTransient<IFilePasswordRepository, FilePasswordRepository>();
+builder.Services.AddTransient<IFileFetchRepository, FileFetchRepository>();
+
+builder.Services.AddTransient<IFileManipulationRepository, FileManipulationRepository>();
+builder.Services.AddTransient<IFileProcessingTemplateTagMappingRepository, FileProcessingTemplateTagMappingRepository>();
+builder.Services.AddTransient<IFileProcessingTemplateDMSApplicationRepository, FileProcessingTemplateDMSApplicationRepository>();
+
+builder.Services.AddTransient<PPMContext>();
+
 var app = builder.Build();
 //database migration
 
-
+var context = app.Services.GetRequiredService<PPMContext>();
+context.Database.Migrate();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    
+   
+
 }
+
 app.UseCors(x => x.AllowAnyHeader()
       .AllowAnyMethod()
       .AllowAnyOrigin());

@@ -18,13 +18,14 @@ namespace PPMV2.Core.Infrastructure.Repository
         {
             
             this._ConnectionString = AppSettings.GetCurrentSettings();
+           // Database.Migrate();
         }
        
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             // connect to sql server with connection string from app settings
             options.UseSqlServer(this._ConnectionString);
-           // Database.Migrate();
+           
 
         }
         public DbSet<Role> Roles { get; set; }
@@ -44,7 +45,17 @@ namespace PPMV2.Core.Infrastructure.Repository
         public DbSet<FileRead> FileReads { get; set; }
         public DbSet<FileProcessingTemplateFormulaField> FileProcessingTemplateFormulaFields { get; set; }
         public DbSet<FrequencyTag> FrequencyTags { get; set; }
+        public DbSet<FundScheduler> FundSchedulers { get; set; }
+
+        public DbSet<FilePassword> FilePasswords { get; set; }
+        public DbSet<FileFetch> FileFetchs { get; set; }
+        public DbSet<FileManipulation> FileManipulations { get; set; }
+
+        public DbSet<FileProcessingTemplateTagMapping> FileProcessingTemplateTagMappings { get; set; }
+
+        public DbSet<FileProcessingTemplateDMSApplication> FileProcessingTemplateDMSApplications { get; set; }
         
+            
 
     }   
 }

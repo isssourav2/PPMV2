@@ -31,8 +31,7 @@ namespace PPMV2.Core.Domain.Entity
         public string ReadFromNextColCell { get; set; }
 
         public string SheetName { get; set; }
-
-
+        public string SName { get; set; }
 
     }
 }
