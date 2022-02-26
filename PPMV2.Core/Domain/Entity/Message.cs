@@ -10,6 +10,10 @@ namespace PPMV2.Core.Domain.Entity
     {
         public string message { get; set; }
 
+        public string validation { get; set; }
+
+        public bool isValidation { get; set; }
+
         public string Status { get; set; }
 
         public int? Count { get; set; }

@@ -13,8 +13,19 @@ namespace PPMV2.Core.Domain.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int RiskName { get; set; }
+        public string? Name { get; set; }
+        public string Description { get; set; }
+        public string? Inheritance { get; set; }
+
+        public string? Grouping { get; set; }
+
+        public int? ParentId { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
+        public string? DeletedBy { get; set; }
+
+        public string? TemplateCategory { get; set; }
 
     }
 }
