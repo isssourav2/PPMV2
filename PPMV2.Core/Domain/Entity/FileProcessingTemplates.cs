@@ -12,8 +12,8 @@ namespace PPMV2.Core.Domain.Entity
     {
         public FileProcessingTemplates()
         {
-            Tags=new List<Tag>();
-            Applications= new List<Application>();
+            Tags = new List<Tag>();
+            Applications = new List<Application>();
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

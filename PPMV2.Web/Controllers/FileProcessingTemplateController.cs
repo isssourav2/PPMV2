@@ -52,6 +52,8 @@ namespace PPMV2.Web.Controllers
             var filesTemplate=await this._repo.GetById(id);
             var tags= _tagRepo.GetAll().Result.Where(x=>x.TagId== filesTemplate.TagId).ToList();
             var applications = _apprepo.GetAll().Result.Where(x => x.ApplicationId == filesTemplate.ApplicationId).ToList();
+            filesTemplate.Tags = new List<Tag>();
+            filesTemplate.Applications = new List<Application>();
             filesTemplate.Tags= tags;
             filesTemplate.Applications= applications;
 
