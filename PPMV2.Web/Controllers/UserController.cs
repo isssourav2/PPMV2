@@ -17,7 +17,7 @@ namespace PPMV2.Web.Controllers
         public UserController(IUserRepository repo, IRoleRepository Rolerepo)
         {
             //Repo Object
-            this._repo = repo; 
+            this._repo = repo;
             this._Rolerepo = Rolerepo;
         }
         // GET: api/<UserController>
@@ -34,13 +34,13 @@ namespace PPMV2.Web.Controllers
             return await this._repo.GetById(id);
         }
 
-     
+
 
         // POST api/<UserController>
         [HttpPost]
         public async Task Post(User user)
         {
-            user.UserId=Guid.NewGuid();
+            user.UserId = Guid.NewGuid();
             user.IsActive = true;
             //user.CreatedDate = DateTime.Now;
             await this._repo.Add(user);
@@ -58,8 +58,24 @@ namespace PPMV2.Web.Controllers
         [HttpDelete("{id}")]
         public async Task Delete(Guid id)
         {
-           var user = await this._repo.GetByGuidId(id);
+            var user = await this._repo.GetByGuidId(id);
             await this._repo.Delete(user);
         }
+
+        //[HttpGet]
+        //public async Task<bool> GetExist(string columnName, int fileProcessingTemplateId = 0)
+        //{
+        //    try
+        //    {
+        //        var data = await this._repo.GetAll();
+
+        //        return data.Any(m => m.ColumnName.ToLower().Trim() == columnName.ToLower().Trim() && m.FileProcessingTemplateId != fileProcessingTemplateId);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
     }
 }

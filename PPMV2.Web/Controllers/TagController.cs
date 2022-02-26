@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PPMV2.Core.Domain.Entity;
 using PPMV2.Core.Infrastructure.TagRepo;
+using PPMV2.Web.Utility;
 
 namespace PPMV2.Web.Controllers
 {
@@ -35,9 +36,24 @@ namespace PPMV2.Web.Controllers
         // PUT: api/Tag/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut]
-        public async Task Put(Tag tag)
+        public async Task<Response> Put(Tag tag)
         {
-            await this._repo.Update(tag);
+            Response response=new Response();
+            var data = await _repo.GetAll();
+            bool isNameExist = data.Where(m => m.TagName == tag.TagName && m.TagId != tag.TagId).Any();
+            if (isNameExist)
+            {
+                response.IsError = true;
+                response.ErrorMessage = "Tag Name already exist!!";
+                
+            }
+            else
+            {
+                await this._repo.Update(tag);
+                response.IsError = false;
+                response.ErrorMessage = "Update successfully done!!";
+            }
+            return response;
         }
 
         // POST: api/Tag
@@ -55,5 +71,7 @@ namespace PPMV2.Web.Controllers
             var role = await this._repo.GetById(id);
             await this._repo.Delete(role);
         }
+
+
     }
 }

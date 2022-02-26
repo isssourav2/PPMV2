@@ -64,9 +64,15 @@ namespace PPMV2.Web.Controllers
         {
             try
             {
-                //FileValidation.IsActive = true;
-                //FileValidation.CreatedDate = DateTime.Now;
-                await this._repo.Add(FileValidation);
+                //bool isExistColumnName = await GetExist(FileValidation.ColumnName, FileValidation.FileProcessingTemplateId);
+
+                //if (isExistColumnName)
+                //{
+
+                //}
+
+                    await this._repo.Add(FileValidation);
+                
             }
             catch (Exception ex)
             {
@@ -88,5 +94,43 @@ namespace PPMV2.Web.Controllers
                 throw ex;
             }
         }
+
+        //[HttpGet,Route("GetAllById")]
+        ////public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
+        //public async Task<IEnumerable<FileValidation>> Get(int fileProcessingTemplateId = 0)
+        //{
+        //    try
+        //    {
+        //        //var data = await this._repo.GetAll();
+        //        //data = data.Where(m => m.FileProcessingTemplateId == fileProcessingTemplateId).ToList();
+
+        //        ////if (data.Count() > 0)
+        //        ////    return new HttpResponseMessage { Content = data, };
+        //        ////else
+        //        ////    return Request.Body{ Content}
+        //        //return data;
+        //        return await this._repo.GetAll();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+        //public async Task<bool> GetExist(string columnName, int fileProcessingTemplateId = 0)
+        //{
+        //    try
+        //    {
+        //        var data = await this._repo.GetAll();
+
+        //        return data.Any(m => m.ColumnName.ToLower().Trim() == columnName.ToLower().Trim() && m.FileProcessingTemplateId != fileProcessingTemplateId);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+
+
     }
 }
